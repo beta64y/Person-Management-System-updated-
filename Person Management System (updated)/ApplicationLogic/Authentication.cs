@@ -23,7 +23,9 @@ namespace Person_Management_System__updated_.ApplicationLogic
             Console.WriteLine("/accountinfo - show active account info");
             Console.WriteLine("/panel - open panel");
         }
-        public static void Register()/////////////////////////
+
+
+        public static void Register()
         {
             string firstName = GetFirstName();
             string lastName = GetLastName();
@@ -35,6 +37,9 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 Console.WriteLine($"User added to system, his/her details are : {user.GetInfo()}");
             }
         }
+
+
+
         public static void Login()////////////////////////////////////
         {
             if (!IsAccountActive)
@@ -75,7 +80,29 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 Console.WriteLine("You are already logged in . Please , log out first.");
             }
         }
-        public static void Logout()/////////////////////////////////////
+
+
+        public static void BanUser()
+        {
+            if(Account is Admin)
+            {
+                Console.Write("Please enter user's email : ");
+                string email = Console.ReadLine();
+
+                Console.Write("Please enter user's password : ");
+                string password = Console.ReadLine();
+
+                if (UserRepository.IsUserExistByEmailAndPassword(email, password))
+                {
+                    User user = UserRepository.GetUserByEmailAndPassword(email, password);
+                    Console.WriteLine($"{user.FirstName} {user.LastName} Permanently Banned");
+                    UserRepository.RemoveUser(user);
+                    
+                }
+            }
+        }
+
+        public static void Logout()
         {
             if(IsAccountActive)
             {
@@ -89,7 +116,9 @@ namespace Person_Management_System__updated_.ApplicationLogic
             }
 
         }
-        public static void AccountInfo()/////////////////////////////////////
+
+
+        public static void AccountInfo()
         {
             if (IsAccountActive)
             {
@@ -100,12 +129,14 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 Console.WriteLine("You must login first.");
             }
         }
+
+
         public static void Update()
         {
-            Console.Write("Please enter user's email : ");
+            Console.Write("Please enter your email : ");
             string email = Console.ReadLine();
 
-            Console.Write("Please enter user's password : ");
+            Console.Write("Please enter your password : ");
             string password = Console.ReadLine();
             if (Account.Email == email && Account.Password == password)
             {
@@ -125,7 +156,31 @@ namespace Person_Management_System__updated_.ApplicationLogic
             }
 
         }
-        public static void OpenPanel()
+        public static void UpdateforAdmin()
+        {
+            Console.Write("Please enter user's email : ");
+            string email = Console.ReadLine();
+            if (Account.Email != email && UserRepository.IsUserExistByEmail(email) && UserRepository.GetUserByEmail(email) is Admin)
+            {
+                User user = UserRepository.GetUserByEmail(email);
+                Console.Write("(New) ");
+                string New_FirstName = GetFirstName();
+
+                Console.Write("(New) ");
+                string New_LastName = GetLastName();
+                UserRepository.Update(user, New_FirstName, New_LastName);
+                Console.WriteLine("Account Updated");
+
+            }
+            else
+            {
+                Console.WriteLine("Rules : \n1. An Admin cannot update their own account \n2. The email entered must be valid \n3. The email entered must be Admin ");
+            }
+        }
+        
+
+
+            public static void OpenPanel()
         {
             
             if (Account is Admin)

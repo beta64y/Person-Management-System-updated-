@@ -12,7 +12,8 @@ namespace Person_Management_System__updated_.Database.Repository
         private static List<User> Users { get; set; } = new List<User>()
         {
             new Admin("Yahya", "Camalzade", "YahyaCamalzade@gmail.com", "Yahya123"),
-            
+            new Admin("Yahya", "Camalzade", "YahyaCamalzade2@gmail.com", "Yahya123")
+
         };
         public static User AddUser(string firstName, string lastName, string email, string password)
         {
@@ -65,5 +66,18 @@ namespace Person_Management_System__updated_.Database.Repository
 
             return null;
         }
+        public static User GetUserByEmail(string email)
+        {
+            foreach (User user in Users)
+            {
+                if (user.Email == email)
+                {
+                    return user;
+                }
+            }
+
+            return null;
+        }
+
     }
 }
