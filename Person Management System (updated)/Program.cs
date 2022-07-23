@@ -18,36 +18,38 @@ namespace Person_Management_System__updated_
                 {
                     Authentication.Register();
                 }
+
                 else if (command == "/login")
                 {
                     Authentication.Login();                   
                 }
+
                 else if (command == "/logout")
                 {
                     Authentication.Logout();
                 }
+
                 else if (command == "/panel")
                 {
                     Authentication.OpenPanel();
                 }
+
                 else if (command == "/accountinfo")
                 {
                     Authentication.AccountInfo();
                 }
+
                 else if (command == "/help")
                 {
-                    Console.WriteLine("/exit - close program");
-                    Console.WriteLine("/register - allows you to register");
-                    Console.WriteLine("/login - allows you to log in");
-                    Console.WriteLine("/logout - allows you to log out");
-                    Console.WriteLine("/accountinfo - show active account info");
-                    
+                    Authentication.Help();
                 }
+
                 else if (command == "/exit")
                 {
                     Console.WriteLine("May the Force be with you");
                     break;
                 }
+
                 else
                 {
                     Console.WriteLine("Command not found!");

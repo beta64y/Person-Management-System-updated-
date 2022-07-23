@@ -14,6 +14,15 @@ namespace Person_Management_System__updated_.ApplicationLogic
     {
        protected static User Account { get; set; }
        protected static bool IsAccountActive { get; set; } = false;
+        public static void Help()
+        {
+            Console.WriteLine("/exit - close program");
+            Console.WriteLine("/register - allows you to register");
+            Console.WriteLine("/login - allows you to log in");
+            Console.WriteLine("/logout - allows you to log out");
+            Console.WriteLine("/accountinfo - show active account info");
+            Console.WriteLine("/panel - open panel");
+        }
         public static void Register()/////////////////////////
         {
             string firstName = GetFirstName();
@@ -42,15 +51,18 @@ namespace Person_Management_System__updated_.ApplicationLogic
                     if (user is Admin)
                     {
                         Console.WriteLine($"Admin successfully authenticated : {user.GetInfo()}");
+                        Account = user;
+                        IsAccountActive = true;
                         DashBoard.AdminPanel();
                     }
                     else
                     {                   
                         Console.WriteLine($"User successfully authenticated : {user.GetInfo()}");
+                        Account = user;
+                        IsAccountActive = true;
                         DashBoard.UserPanel();
                     }
-                    Account = user;
-                    IsAccountActive = true;
+                    
                 }
                 else
                 {
@@ -95,16 +107,21 @@ namespace Person_Management_System__updated_.ApplicationLogic
 
             Console.Write("Please enter user's password : ");
             string password = Console.ReadLine();
-            if (UserRepository.IsUserExistByEmailAndPassword(email, password))
+            if (Account.Email == email && Account.Password == password)
             {
                 User user = UserRepository.GetUserByEmailAndPassword(email, password);
-                Console.Write("Please enter user's New Firstname : ");
+                Console.Write("(New) ");
                 string New_FirstName = GetFirstName();
 
-                Console.Write("Please enter user's New Lastname : ");
+                Console.Write("(New) ");
                 string New_LastName = GetLastName();
                 UserRepository.Update(user, New_FirstName, New_LastName);
+                Console.WriteLine("Account Updated");
 
+            }
+            else
+            {
+                Console.WriteLine("Email or Password is not True");
             }
 
         }
@@ -170,7 +187,7 @@ namespace Person_Management_System__updated_.ApplicationLogic
             {
                 if (email_wrongChecker)
                 {
-                    Console.WriteLine("The email you entered is incorrect, Receipent - can only be composed of letters and \nnumbers, the total length can be min 10 max 30, Separator - there must be an @ in \nbetween Domain - can only end with gamil.com");
+                    Console.WriteLine("The email you entered is incorrect, Receipent - can only be composed of letters and \nnumbers, the total length can be min 10 max 30, Separator - there must be an @ in \nbetween Domain - can only end with gamil.com.\n\"E-mail must be unique\"");
                 }
                 Console.WriteLine("Enter Email :");
                 email = Console.ReadLine();

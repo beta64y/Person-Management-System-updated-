@@ -27,8 +27,7 @@ namespace Person_Management_System__updated_.Database.Repository
         public static void Update(User user, string firstName, string lastName)
         {
             user.FirstName = firstName;
-            user.LastName = lastName;
-            
+            user.LastName = lastName;           
         }
         public static bool IsUserExistByEmailAndPassword(string email ,string password)
         {
