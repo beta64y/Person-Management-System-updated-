@@ -18,7 +18,7 @@ namespace Person_Management_System__updated_.ApplicationLogic
 
                 if (command == "/inbox")
                 {
-                    
+                    Authentication.ShowReports();
                 }
                 else if (command == "/update-user")
                 {
@@ -26,7 +26,7 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 }
                 else if (command == "/report-user")
                 {
-                    
+                    Authentication.ReportUser();
                 }
                 else if (command == "/support")
                 {
@@ -57,7 +57,7 @@ namespace Person_Management_System__updated_.ApplicationLogic
 
                 if (command == "/inbox")
                 {
-
+                    Authentication.ShowReports();
                 }
                 else if (command == "/remove-user")
                 {
@@ -66,11 +66,7 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 else if (command == "/update-admin")
                 {
                     Authentication.UpdateforAdmin();
-                }
-                else if (command == "/report-info")
-                {
-
-                }              
+                }             
                 else if (command == "/support")
                 {
                     Console.WriteLine("/close - close panel");

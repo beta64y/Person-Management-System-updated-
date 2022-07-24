@@ -88,17 +88,7 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 Console.WriteLine($"{report.Series}. User ({report.Sender.Email}) report {report.Target.Email} Date : {report.Sent}\n{report.Text}");
             }
         }
-
-
-        public static void ShowReportsforAdmin()
-        {
-            Admin admin = (Admin)Account;
-            foreach(Report report in admin.userreports)
-            {
-                Console.WriteLine($"{report.Series}. User ({report.Sender.Email}) report {report.Target.Email} Date : {report.Sent}\n{report.Text}");
-            }
-        }
-
+        
 
         public static void ReportUser()
         {
@@ -108,7 +98,12 @@ namespace Person_Management_System__updated_.ApplicationLogic
             string reason = Console.ReadLine();
             if(email != Account.Email && Validation.IsLengthBetween(reason,10,30) && UserRepository.IsUserExistByEmail(email))
             {
-
+                User target = UserRepository.GetUserByEmail(email);
+                UserRepository.AddReport(Account, reason, target);
+            }
+            else
+            {
+                Console.WriteLine("Rules : \n1. A User cannot report their own account \n2. The email entered must be valid \n3. The reason's length entered must be higher than 10 and less than 30 ");
             }
         }
 

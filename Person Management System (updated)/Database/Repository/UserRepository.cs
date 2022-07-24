@@ -13,7 +13,9 @@ namespace Person_Management_System__updated_.Database.Repository
         private static List<User> Users { get; set; } = new List<User>()
         {
             new Admin("Yahya", "Camalzade", "YahyaCamalzade@gmail.com", "Yahya123"),
-            new Admin("Yahya", "Camalzade", "YahyaCamalzade2@gmail.com", "Yahya123")
+            new Admin("Yahya", "Camalzade", "YahyaCamalzade2@gmail.com", "Yahya123"),
+            new User("Yahya", "Camalzade", "YahyaCamalzade3@gmail.com", "Yahya123"),
+            new User("Yahya", "Camalzade", "YahyaCamalzade4@gmail.com", "Yahya123")
 
         };
 
@@ -97,22 +99,19 @@ namespace Person_Management_System__updated_.Database.Repository
 
         public static void AddReport(User sender , string reason , User target)
         { 
-        
-        }
-        
-        
-        public void SendingReport(Report report , User target)
-        {
-            target.reportinbox.Add(report);
-            foreach (User user in Users)
-            {
+        Report report = new Report(sender,reason,target);
+          target.reportinbox.Add(report);
+          foreach (User user in Users)
+          {
                 if (user is Admin)
-                {
-                    Admin admin = (Admin)user;
-                    admin.userreports.Add(report);
+                {      
+                    user.reportinbox.Add(report);
                 }
-            }
+          }
         }
+        
+        
+        
 
     }
 }

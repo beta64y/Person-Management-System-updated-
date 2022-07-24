@@ -16,8 +16,11 @@ namespace Person_Management_System__updated_.Database.Models.Users
         public  string Email { get; set; }
         public  string Password { get; set; }
         public DateTime CreationTime { get; set; }
-        public List<Report> reportinbox { get; set; }
-        
+        public List<Report> reportinbox { get; set; } = new List<Report>();
+      
+
+
+
         public User(string firstName, string lastName, string email, string password)
         {
             FirstName = firstName;

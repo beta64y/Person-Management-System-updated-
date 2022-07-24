@@ -9,7 +9,7 @@ namespace Person_Management_System__updated_.Database.Models.Users
 {
     internal class Admin : User
     {
-        public List<Report> userreports { get; set; }
+        
         public Admin(string firstName, string lastName, string email, string password)
             : base(firstName, lastName, email, password)
         {
