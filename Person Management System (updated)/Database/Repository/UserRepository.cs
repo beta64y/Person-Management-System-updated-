@@ -10,7 +10,7 @@ namespace Person_Management_System__updated_.Database.Repository
 {
     internal class UserRepository
     {
-        private static List<User> Users { get; set; } = new List<User>()
+        public static List<User> Users { get; set; } = new List<User>()
         {
             new Admin("Yahya", "Camalzade", "YahyaCamalzade@gmail.com", "Yahya123"),
             new Admin("Yahya", "Camalzade", "YahyaCamalzade2@gmail.com", "Yahya123"),
@@ -97,20 +97,6 @@ namespace Person_Management_System__updated_.Database.Repository
             }
 
             return null;
-        }
-
-
-        public static void AddReport(User sender , string reason , User target)
-        { 
-        Report report = new Report(sender,reason,target);
-          target.reportinbox.Add(report);
-          foreach (User user in Users)
-          {
-                if (user is Admin && target != user)
-                {      
-                    user.reportinbox.Add(report);
-                }
-          }
         }
 
 

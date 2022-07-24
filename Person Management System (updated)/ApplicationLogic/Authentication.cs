@@ -98,7 +98,7 @@ namespace Person_Management_System__updated_.ApplicationLogic
             if(email != Account.Email && Validation.IsLengthBetween(reason,10,30) && UserRepository.IsUserExistByEmail(email))
             {
                 User target = UserRepository.GetUserByEmail(email);
-                UserRepository.AddReport(Account, reason, target);
+                ReportRepository.AddReport(Account, reason, target);
                 Console.WriteLine("User Reported");
             }
             else
