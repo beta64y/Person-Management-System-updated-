@@ -1,7 +1,7 @@
 ﻿using System;
 using Person_Management_System__updated_.ApplicationLogic;
 
-namespace Person_Management_System__updated_
+namespace Person_Management_System__updated_.UI
 {
     internal class Program
     {
@@ -10,7 +10,7 @@ namespace Person_Management_System__updated_
             Console.WriteLine("Hi , You Can Use /help Command for Get Information about Commads !");
             while (true)
             {
-                
+
                 Console.Write("\nEnter command : ");
                 string command = Console.ReadLine();
 
@@ -21,7 +21,7 @@ namespace Person_Management_System__updated_
 
                 else if (command == "/login")
                 {
-                    Authentication.Login();                   
+                    Authentication.Login();
                 }
 
                 else if (command == "/logout")

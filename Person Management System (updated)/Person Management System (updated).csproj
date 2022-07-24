@@ -6,8 +6,4 @@
     <RootNamespace>Person_Management_System__updated_</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="UI\" />
-  </ItemGroup>
-
 </Project>
