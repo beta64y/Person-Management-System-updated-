@@ -32,8 +32,8 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 {
                     Console.WriteLine("/close - close panel");
                     Console.WriteLine("/update-user - This command allows you to update your account");
-
-
+                    Console.WriteLine("/report-user - This command allows you to report any user");
+                    Console.WriteLine("/inbox - show reports");
 
                 }
                 else if (command == "/close")
@@ -66,13 +66,18 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 else if (command == "/update-admin")
                 {
                     Authentication.UpdateforAdmin();
-                }             
+                }
+                else if (command == "/make-admin")
+                {
+                    Authentication.AddAdmin();
+                }
                 else if (command == "/support")
                 {
-                    Console.WriteLine("/close - close panel");
-                    Console.WriteLine("/update-user - this command allows you to update your account");
+                    Console.WriteLine("/close - close panel");                 
                     Console.WriteLine("/update-admin - this command is updating the selected admin's account");
-
+                    Console.WriteLine("/make-admin - This command allows Allows you to make the user admin  (not admin)");
+                    Console.WriteLine("/remove-user -  This command allows you to ban any user (not admin)");
+                    Console.WriteLine("/inbox - show reports");
                 }
                 else if (command == "/close")
                 {

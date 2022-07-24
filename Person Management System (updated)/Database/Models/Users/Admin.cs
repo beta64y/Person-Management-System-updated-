@@ -15,6 +15,11 @@ namespace Person_Management_System__updated_.Database.Models.Users
         {
         
         }
+        public Admin(string firstName, string lastName, string email, string password,int id,DateTime datetime)
+            : base(firstName, lastName, email, password,id,datetime)
+        {
+
+        }
         public override string GetInfo()
         {
             return $"{FirstName} {LastName} {Email}";

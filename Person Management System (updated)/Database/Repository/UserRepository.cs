@@ -109,9 +109,19 @@ namespace Person_Management_System__updated_.Database.Repository
                 }
           }
         }
-        
-        
-        
+
+
+        public static void AddAdmin(User user)
+        {
+            if(!(user is Admin))
+            {
+                Users.Add(new Admin(user.FirstName, user.LastName, user.Email, user.Password,user.Id,user.CreationTime));
+                Users.Remove(user);
+            }
+        }
+
+
+
 
     }
 }

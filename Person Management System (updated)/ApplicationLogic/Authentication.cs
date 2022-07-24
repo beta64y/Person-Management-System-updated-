@@ -42,7 +42,6 @@ namespace Person_Management_System__updated_.ApplicationLogic
         }
 
 
-
         public static void Login()
         {
             if (!IsAccountActive)
@@ -107,25 +106,24 @@ namespace Person_Management_System__updated_.ApplicationLogic
             }
         }
 
+
         public static void BanUser()
         {
             if(Account is Admin)
             {
                 Console.Write("Please enter user's email : ");
-                string email = Console.ReadLine();
+                string email = Console.ReadLine();     
 
-                Console.Write("Please enter user's password : ");
-                string password = Console.ReadLine();
-
-                if (UserRepository.IsUserExistByEmailAndPassword(email, password))
+                if (UserRepository.IsUserExistByEmail(email) && !(UserRepository.GetUserByEmail(email) is Admin))
                 {
-                    User user = UserRepository.GetUserByEmailAndPassword(email, password);
+                    User user = UserRepository.GetUserByEmail(email);
                     Console.WriteLine($"{user.FirstName} {user.LastName} Permanently Banned");
                     UserRepository.RemoveUser(user);
                     
                 }
             }
         }
+
 
         public static void Logout()
         {
@@ -206,7 +204,6 @@ namespace Person_Management_System__updated_.ApplicationLogic
         }
         
 
-
          public static void OpenPanel()
          {
             
@@ -227,7 +224,19 @@ namespace Person_Management_System__updated_.ApplicationLogic
          }
 
         
-        
+        public static void AddAdmin()
+        {
+            Console.Write("Please enter user's email : ");
+            string email = Console.ReadLine();
+            if (Account.Email != email && UserRepository.IsUserExistByEmail(email) && !( UserRepository.GetUserByEmail(email) is Admin))
+            {
+                UserRepository.AddAdmin(UserRepository.GetUserByEmail(email));
+            }
+            else
+            {
+                Console.WriteLine("Rules : \n1. An Admin cannot Make admin their own account \n2. The email entered must be valid \n3. The email entered must be User ");
+            }
+        }
         
         public static string GetFirstName()
         {

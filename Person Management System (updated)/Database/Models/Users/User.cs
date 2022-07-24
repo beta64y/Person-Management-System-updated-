@@ -30,6 +30,15 @@ namespace Person_Management_System__updated_.Database.Models.Users
             Id = IdCounter++;
             CreationTime = DateTime.Now;
         }
+        public User(string firstName, string lastName, string email, string password,int id, DateTime datetime)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+            Id = id;
+            CreationTime = datetime;
+        }
         public virtual string GetInfo()
         {
             return $"{FirstName} {LastName}";
