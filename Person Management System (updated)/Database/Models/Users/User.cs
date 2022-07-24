@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Person_Management_System__updated_.Database.Models.Inbox;
 
 namespace Person_Management_System__updated_.Database.Models.Users
 {
@@ -15,7 +16,7 @@ namespace Person_Management_System__updated_.Database.Models.Users
         public  string Email { get; set; }
         public  string Password { get; set; }
         public DateTime CreationTime { get; set; }
-
+        public List<Report> reportinbox { get; set; }
         
         public User(string firstName, string lastName, string email, string password)
         {

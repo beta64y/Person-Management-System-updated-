@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Person_Management_System__updated_.Database.Repository;
 using Person_Management_System__updated_.Database.Models.Users;
+using Person_Management_System__updated_.Database.Models.Inbox;
 using Person_Management_System__updated_.ApplicationLogic.Validations;
 using Person_Management_System__updated_.ApplicationLogic;
 
@@ -14,6 +15,8 @@ namespace Person_Management_System__updated_.ApplicationLogic
     {
        protected static User Account { get; set; }
        protected static bool IsAccountActive { get; set; } = false;
+        
+        
         public static void Help()
         {
             Console.WriteLine("/exit - close program");
@@ -40,7 +43,7 @@ namespace Person_Management_System__updated_.ApplicationLogic
 
 
 
-        public static void Login()////////////////////////////////////
+        public static void Login()
         {
             if (!IsAccountActive)
             {
@@ -56,18 +59,14 @@ namespace Person_Management_System__updated_.ApplicationLogic
                     if (user is Admin)
                     {
                         Console.WriteLine($"Admin successfully authenticated : {user.GetInfo()}");
-                        Account = user;
-                        IsAccountActive = true;
-                        DashBoard.AdminPanel();
                     }
                     else
                     {                   
-                        Console.WriteLine($"User successfully authenticated : {user.GetInfo()}");
-                        Account = user;
-                        IsAccountActive = true;
-                        DashBoard.UserPanel();
+                        Console.WriteLine($"User successfully authenticated : {user.GetInfo()}");                     
                     }
-                    
+                    Account = user;
+                    IsAccountActive = true;
+                    OpenPanel();
                 }
                 else
                 {
@@ -81,6 +80,37 @@ namespace Person_Management_System__updated_.ApplicationLogic
             }
         }
 
+
+        public static void ShowReports()
+        {
+            foreach (Report report in Account.reportinbox)
+            {
+                Console.WriteLine($"{report.Series}. User ({report.Sender.Email}) report {report.Target.Email} Date : {report.Sent}\n{report.Text}");
+            }
+        }
+
+
+        public static void ShowReportsforAdmin()
+        {
+            Admin admin = (Admin)Account;
+            foreach(Report report in admin.userreports)
+            {
+                Console.WriteLine($"{report.Series}. User ({report.Sender.Email}) report {report.Target.Email} Date : {report.Sent}\n{report.Text}");
+            }
+        }
+
+
+        public static void ReportUser()
+        {
+            Console.Write("Please enter target's email : ");
+            string email = Console.ReadLine();
+            Console.Write("Please enter reason of report : ");
+            string reason = Console.ReadLine();
+            if(email != Account.Email && Validation.IsLengthBetween(reason,10,30) && UserRepository.IsUserExistByEmail(email))
+            {
+
+            }
+        }
 
         public static void BanUser()
         {
@@ -156,6 +186,8 @@ namespace Person_Management_System__updated_.ApplicationLogic
             }
 
         }
+
+
         public static void UpdateforAdmin()
         {
             Console.Write("Please enter user's email : ");
@@ -180,19 +212,24 @@ namespace Person_Management_System__updated_.ApplicationLogic
         
 
 
-            public static void OpenPanel()
-        {
+         public static void OpenPanel()
+         {
             
-            if (Account is Admin)
+            if (Account is Admin && IsAccountActive)
             {
                 DashBoard.AdminPanel();
             }
-            else
+            else if(IsAccountActive)
             {
                 DashBoard.UserPanel();
             }
+            else
+            {
+                Console.WriteLine("You must login first to open panel");
+            }
             
-        }
+            
+         }
 
         
         

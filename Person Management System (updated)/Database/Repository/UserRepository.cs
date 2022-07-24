@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Person_Management_System__updated_.Database.Models.Users;
+using Person_Management_System__updated_.Database.Models.Inbox;
 
 namespace Person_Management_System__updated_.Database.Repository
 {
@@ -15,21 +16,29 @@ namespace Person_Management_System__updated_.Database.Repository
             new Admin("Yahya", "Camalzade", "YahyaCamalzade2@gmail.com", "Yahya123")
 
         };
+
+
         public static User AddUser(string firstName, string lastName, string email, string password)
         {
             User user = new User(firstName, lastName, email, password);
             Users.Add(user);
             return user;
         }
+
+
         public static void RemoveUser(User user)
         {
            Users.Remove(user);                
         }
+
+
         public static void Update(User user, string firstName, string lastName)
         {
             user.FirstName = firstName;
             user.LastName = lastName;           
         }
+
+
         public static bool IsUserExistByEmailAndPassword(string email ,string password)
         {
             foreach (User user in Users)
@@ -42,6 +51,8 @@ namespace Person_Management_System__updated_.Database.Repository
             }
             return false;
         }
+
+
         public static bool IsUserExistByEmail(string email)
         {
             foreach (User user in Users)
@@ -54,6 +65,8 @@ namespace Person_Management_System__updated_.Database.Repository
             }
             return false;
         }
+
+
         public static User GetUserByEmailAndPassword(string email, string password)
         {
             foreach (User user in Users)
@@ -66,6 +79,8 @@ namespace Person_Management_System__updated_.Database.Repository
 
             return null;
         }
+
+
         public static User GetUserByEmail(string email)
         {
             foreach (User user in Users)
@@ -77,6 +92,26 @@ namespace Person_Management_System__updated_.Database.Repository
             }
 
             return null;
+        }
+
+
+        public static void AddReport(User sender , string reason , User target)
+        { 
+        
+        }
+        
+        
+        public void SendingReport(Report report , User target)
+        {
+            target.reportinbox.Add(report);
+            foreach (User user in Users)
+            {
+                if (user is Admin)
+                {
+                    Admin admin = (Admin)user;
+                    admin.userreports.Add(report);
+                }
+            }
         }
 
     }

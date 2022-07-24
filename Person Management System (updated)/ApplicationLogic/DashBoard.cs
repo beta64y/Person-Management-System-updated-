@@ -28,10 +28,6 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 {
                     
                 }
-                else if (command == "/chat")
-                {
-                    
-                }
                 else if (command == "/support")
                 {
                     Console.WriteLine("/close - close panel");
@@ -74,11 +70,7 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 else if (command == "/report-info")
                 {
 
-                }
-                else if (command == "/chat")
-                {
-
-                }
+                }              
                 else if (command == "/support")
                 {
                     Console.WriteLine("/close - close panel");
