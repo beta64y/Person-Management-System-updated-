@@ -20,7 +20,7 @@ namespace Person_Management_System__updated_.Database.Repository
         };
 
 
-        public static User AddUser(string firstName, string lastName, string email, string password)
+        private static User AddUser(string firstName, string lastName, string email, string password)
         {
             User user = new User(firstName, lastName, email, password);
             Users.Add(user);

@@ -15,7 +15,7 @@ namespace Person_Management_System__updated_.Database.Repository
         {
             Report report = new Report(sender, reason, target);
             target.reportinbox.Add(report);
-            foreach (User user in UserRepository.Users)
+            foreach (User user in UserRepository.GetUsers())
             {
                 if (user is Admin && target != user)
                 {
