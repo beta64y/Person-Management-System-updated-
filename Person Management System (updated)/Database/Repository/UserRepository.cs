@@ -27,7 +27,10 @@ namespace Person_Management_System__updated_.Database.Repository
             return user;
         }
 
-
+        public static List<User> GetUsers()
+        {
+            return Users;
+        }
         public static void RemoveUser(User user)
         {
            Users.Remove(user);                
@@ -103,7 +106,7 @@ namespace Person_Management_System__updated_.Database.Repository
           target.reportinbox.Add(report);
           foreach (User user in Users)
           {
-                if (user is Admin)
+                if (user is Admin && target != user)
                 {      
                     user.reportinbox.Add(report);
                 }

@@ -28,13 +28,17 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 {
                     Authentication.ReportUser();
                 }
+                else if(command == "/show-admin")
+                {
+                    Authentication.ShowAdmin();
+                }
                 else if (command == "/support")
                 {
                     Console.WriteLine("/close - close panel");
-                    Console.WriteLine("/update-user - This command allows you to update your account");
-                    Console.WriteLine("/report-user - This command allows you to report any user");
+                    Console.WriteLine("/update-user - this command allows you to update your account");
+                    Console.WriteLine("/report-user - this command allows you to report any user");
                     Console.WriteLine("/inbox - show reports");
-
+                    Console.WriteLine("/show-admin - shows admins");
                 }
                 else if (command == "/close")
                 {
@@ -71,13 +75,18 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 {
                     Authentication.AddAdmin();
                 }
+                else if (command == "/show-users")
+                {
+                    Authentication.ShowUsers();
+                }
                 else if (command == "/support")
                 {
                     Console.WriteLine("/close - close panel");                 
                     Console.WriteLine("/update-admin - this command is updating the selected admin's account");
-                    Console.WriteLine("/make-admin - This command allows Allows you to make the user admin  (not admin)");
-                    Console.WriteLine("/remove-user -  This command allows you to ban any user (not admin)");
+                    Console.WriteLine("/make-admin - this command allows Allows you to make the user admin  (not admin)");
+                    Console.WriteLine("/remove-user -  this command allows you to ban any user (not admin)");
                     Console.WriteLine("/inbox - show reports");
+                    Console.WriteLine("/show-users - shohs users");
                 }
                 else if (command == "/close")
                 {

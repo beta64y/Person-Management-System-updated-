@@ -10,7 +10,7 @@ namespace Person_Management_System__updated_.Database.Models.Users
     internal class User
     {
         public int Id { get; private set; }
-        protected int IdCounter { get; set; } = 1;
+        private  static int IdCounter = 1;
         public  string FirstName { get; set; }
         public  string LastName { get; set; }
         public  string Email { get; set; }

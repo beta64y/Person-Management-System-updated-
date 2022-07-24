@@ -99,6 +99,7 @@ namespace Person_Management_System__updated_.ApplicationLogic
             {
                 User target = UserRepository.GetUserByEmail(email);
                 UserRepository.AddReport(Account, reason, target);
+                Console.WriteLine("User Reported");
             }
             else
             {
@@ -223,7 +224,32 @@ namespace Person_Management_System__updated_.ApplicationLogic
             
          }
 
-        
+        public static void ShowUsers()
+        {
+            if (Account is Admin)
+            {
+                foreach (User user in UserRepository.GetUsers())
+                {
+                    Console.WriteLine($"Name : \"{user.FirstName} {user.LastName}\" \nEmail : {user.Email} | Password : {user.Password} | ID : {user.Id} | Register Date : {user.CreationTime.ToString()}");
+                   
+                }
+            }
+            else { Console.WriteLine("Only admin can use this command"); }
+
+        } 
+        public static void ShowAdmin()
+        {
+            foreach (User user in UserRepository.GetUsers())
+                {
+                    if (user is Admin)
+                    {
+                        Console.WriteLine($"Name : \"{user.FirstName} {user.LastName}\" \nEmail : {user.Email} | Password : {user.Password} | ID : {user.Id} | Register Date : {user.CreationTime.ToString()}");
+                    }
+                }
+            
+            
+        }
+
         public static void AddAdmin()
         {
             Console.Write("Please enter user's email : ");

@@ -10,7 +10,7 @@ namespace Person_Management_System__updated_.Database.Models.Inbox
     internal class Report : Messages
     {
         public User Target { get; set; }
-        private int SerisesCounter { get; set; } = 1;
+        private static int SerisesCounter = 1;
         public int Series { get; set; }
         public Report(User sender, string text, User target)
             : base(sender, text)
