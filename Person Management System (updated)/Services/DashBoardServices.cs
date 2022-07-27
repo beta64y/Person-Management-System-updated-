@@ -21,6 +21,15 @@ namespace Person_Management_System__updated_.Services
                 Console.WriteLine($"{i + 1}. (report ID : {report.Id}) User ({report.Sender.Email}) report {report.Target.Email} Date : {report.Sent}\n{report.Text}");
             }
         }
+        public static void ShowAllReports()
+        {
+
+            for (int i = 0; i < ReportRepository.GetReports().Count; i++)
+            {
+                Report report = ReportRepository.GetReports()[i];
+                Console.WriteLine($"{i + 1}. (report ID : {report.Id}) User ({report.Sender.Email}) report {report.Target.Email} Date : {report.Sent}\n{report.Text}");
+            }
+        }
         public static void ReportUser()
         {
             Console.Write("Please enter target's email : ");

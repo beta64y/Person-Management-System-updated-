@@ -64,6 +64,10 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 {
                     DashBoardServices.ShowReports();
                 }
+                if (command == "/show-reports")
+                {
+                    DashBoardServices.ShowAllReports();
+                }
                 else if (command == "/remove-user")
                 {
                     DashBoardServices.BanUser(); 
