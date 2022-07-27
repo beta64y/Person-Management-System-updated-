@@ -16,21 +16,26 @@ namespace Person_Management_System__updated_.Database.Repository
             new Admin("Yahya", "Camalzade", "YahyaCamalzade2@gmail.com", "Yahya123"),
             new User("Yahya", "Camalzade", "YahyaCamalzade3@gmail.com", "Yahya123"),
             new User("Yahya", "Camalzade", "YahyaCamalzade4@gmail.com", "Yahya123")
-
         };
+        public static List<User> GetUsers()
+        {
+            return Users;
+        }
 
-
+        
+        
+        
+        
+        
+        
+        
         public static User Add(string firstName, string lastName, string email, string password)
         {
             User user = new User(firstName, lastName, email, password);
             Users.Add(user);
             return user;
         }
-
-        public static List<User> GetUsers()
-        {
-            return Users;
-        }
+       
         public static void RemoveUser(User user)
         {
            Users.Remove(user);                

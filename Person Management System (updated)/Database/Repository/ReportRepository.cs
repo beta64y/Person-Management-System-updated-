@@ -13,8 +13,7 @@ namespace Person_Management_System__updated_.Database.Repository
     {
         private static List<Report> Reports { get; set; } = new List<Report>()
         {
-            
-
+    
         }; 
         public static  List<Report> GetReports()
         {
