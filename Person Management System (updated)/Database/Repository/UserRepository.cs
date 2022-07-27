@@ -10,7 +10,7 @@ namespace Person_Management_System__updated_.Database.Repository
 {
     internal class UserRepository
     {
-        public static List<User> Users { get; set; } = new List<User>()
+        private static List<User> Users { get; set; } = new List<User>()
         {
             new Admin("Yahya", "Camalzade", "YahyaCamalzade@gmail.com", "Yahya123"),
             new Admin("Yahya", "Camalzade", "YahyaCamalzade2@gmail.com", "Yahya123"),
@@ -20,7 +20,7 @@ namespace Person_Management_System__updated_.Database.Repository
         };
 
 
-        private static User AddUser(string firstName, string lastName, string email, string password)
+        public static User Add(string firstName, string lastName, string email, string password)
         {
             User user = new User(firstName, lastName, email, password);
             Users.Add(user);

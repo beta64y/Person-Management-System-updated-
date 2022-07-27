@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Person_Management_System__updated_.Services;
 
 namespace Person_Management_System__updated_.ApplicationLogic
 {
@@ -18,19 +19,19 @@ namespace Person_Management_System__updated_.ApplicationLogic
 
                 if (command == "/inbox")
                 {
-                    Authentication.ShowReports();
+                    DashBoardServices.ShowReports();
                 }
                 else if (command == "/update-user")
                 {
-                    Authentication.Update();
+                    DashBoardServices.Update();
                 }
                 else if (command == "/report-user")
                 {
-                    Authentication.ReportUser();
+                    DashBoardServices.ReportUser();
                 }
                 else if(command == "/show-admin")
                 {
-                    Authentication.ShowAdmin();
+                    DashBoardServices.ShowAdmins();
                 }
                 else if (command == "/support")
                 {
@@ -61,23 +62,23 @@ namespace Person_Management_System__updated_.ApplicationLogic
 
                 if (command == "/inbox")
                 {
-                    Authentication.ShowReports();
+                    DashBoardServices.ShowReports();
                 }
                 else if (command == "/remove-user")
                 {
-                    Authentication.BanUser(); 
+                    DashBoardServices.BanUser(); 
                 }
                 else if (command == "/update-admin")
                 {
-                    Authentication.UpdateforAdmin();
+                    DashBoardServices.UpdateforAdmin();
                 }
                 else if (command == "/make-admin")
                 {
-                    Authentication.AddAdmin();
+                    DashBoardServices.AddAdmin();
                 }
                 else if (command == "/show-users")
                 {
-                    Authentication.ShowUsers();
+                    DashBoardServices.ShowUsers();
                 }
                 else if (command == "/support")
                 {

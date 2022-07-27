@@ -9,6 +9,8 @@ namespace Person_Management_System__updated_.Database.Models.Inbox
 {
     internal class Messages
     {
+        private static int IdCounter = 1;
+        public int Id { get; set; }
         public User Sender { get; set; }
         public string Text { get; set; }
         public DateTime Sent { get; set; }
@@ -17,6 +19,7 @@ namespace Person_Management_System__updated_.Database.Models.Inbox
             Sender = sender;
             Text = text;
             Sent = DateTime.Now;
+            Id = IdCounter++;
         }
     }
 }
