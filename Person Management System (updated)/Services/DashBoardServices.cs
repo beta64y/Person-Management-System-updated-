@@ -27,7 +27,7 @@ namespace Person_Management_System__updated_.Services
             string email = Console.ReadLine();
             Console.Write("Please enter reason of report : ");
             string reason = Console.ReadLine();
-            if (email != Authentication.GetAccount().Email && ValidationServices.IsLengthBetween(reason, 10, 30) && UserRepository.IsUserExistByEmail(email))
+            if (email != Authentication.GetAccount().Email && ValidationServices.IsLengthBetween(reason, 10, 50) && UserRepository.IsUserExistByEmail(email))
             {
                 User target = UserRepository.GetUserByEmail(email);
                 ReportRepository.AddReport(Authentication.GetAccount(), reason, target);
