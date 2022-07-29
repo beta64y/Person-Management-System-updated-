@@ -130,7 +130,25 @@ namespace Person_Management_System__updated_.ApplicationLogic
             Console.WriteLine("/panel - open panel");
         }
         
-        
+
+        public static void Support()
+        {
+            Console.WriteLine("/close - close panel");
+            Console.WriteLine("/inbox - show reports");
+            if (Account is Admin)
+            {
+                Console.WriteLine("/update-admin - this command is updating the selected admin's account");
+                Console.WriteLine("/make-admin - this command allows Allows you to make the user admin  (not admin)");
+                Console.WriteLine("/remove-user -  this command allows you to ban any user (not admin)");        
+                Console.WriteLine("/show-users - shohs users");
+            }
+            else
+            {     
+                Console.WriteLine("/update-user - this command allows you to update your account");
+                Console.WriteLine("/report-user - this command allows you to report any user");
+                Console.WriteLine("/show-admin - shows admins");
+            }
+        }
 
 
 
