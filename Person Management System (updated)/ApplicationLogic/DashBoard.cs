@@ -17,7 +17,7 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 Console.Write("\nEnter panel command : ");
                 string command = Console.ReadLine();
 
-                if (command == "/inbox")
+                if (command == "/reports")
                 {
                     DashBoardServices.ShowReports();
                 }
@@ -56,11 +56,11 @@ namespace Person_Management_System__updated_.ApplicationLogic
                 Console.Write("\nEnter panel command : ");
                 string command = Console.ReadLine();
 
-                if (command == "/inbox")
+                if (command == "/reports")
                 {
                     DashBoardServices.ShowReports();
                 }
-                if (command == "/show-reports")
+                if (command == "/show-all-reports")
                 {
                     DashBoardServices.ShowAllReports();
                 }

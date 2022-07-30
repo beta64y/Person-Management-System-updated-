@@ -134,13 +134,14 @@ namespace Person_Management_System__updated_.ApplicationLogic
         public static void Support()
         {
             Console.WriteLine("/close - close panel");
-            Console.WriteLine("/inbox - show reports");
+            Console.WriteLine("/reports - show reports");
             if (Account is Admin)
             {
                 Console.WriteLine("/update-admin - this command is updating the selected admin's account");
                 Console.WriteLine("/make-admin - this command allows Allows you to make the user admin  (not admin)");
                 Console.WriteLine("/remove-user -  this command allows you to ban any user (not admin)");        
                 Console.WriteLine("/show-users - shohs users");
+                Console.WriteLine("/show-all-reports - show all users reports");
             }
             else
             {     
