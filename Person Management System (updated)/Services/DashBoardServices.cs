@@ -71,10 +71,10 @@ namespace Person_Management_System__updated_.Services
             {
                 User user = UserRepository.GetUserByEmailAndPassword(Authentication.GetAccount().Email, password);
                 Console.Write("(New) ");
-                string New_FirstName = AuthendicationServices.GetFirstName();
+                string New_FirstName = AuthenticationServices.GetFirstName();
 
                 Console.Write("(New) ");
-                string New_LastName = AuthendicationServices.GetLastName();
+                string New_LastName = AuthenticationServices.GetLastName();
                 UserRepository.Update(user, New_FirstName, New_LastName);
                 Console.WriteLine("Account Updated");
 
@@ -93,10 +93,10 @@ namespace Person_Management_System__updated_.Services
             {
                 User user = UserRepository.GetUserByEmail(email);
                 Console.Write("(New) ");
-                string New_FirstName = AuthendicationServices.GetFirstName();
+                string New_FirstName = AuthenticationServices.GetFirstName();
 
                 Console.Write("(New) ");
-                string New_LastName = AuthendicationServices.GetLastName();
+                string New_LastName = AuthenticationServices.GetLastName();
                 UserRepository.Update(user, New_FirstName, New_LastName);
                 Console.WriteLine("Account Updated");
 
@@ -142,6 +142,35 @@ namespace Person_Management_System__updated_.Services
             else
             {
                 Console.WriteLine("Rules : \n1. An Admin cannot Make admin their own account \n2. The email entered must be valid \n3. The email entered must be User ");
+            }
+        }
+        public static void ShowInbox()
+        {
+            foreach(Message message in Authentication.GetAccount().Inbox)
+            {
+                Console.WriteLine("***********************************************");
+                Console.WriteLine($"{message.Sender} : {message.Text}");
+                Console.WriteLine($"{message.Sent}");
+                Console.WriteLine("***********************************************");
+            }
+        }
+        public static void SendMessage()
+        {
+            Console.Write("Please enter user's email : ");
+            string email = Console.ReadLine();
+            User user = UserRepository.GetUserByEmail(email);
+            Console.Write("Please enter your message : ");
+            string text = Console.ReadLine();
+            Message message = new Message(Authentication.GetAccount(),text);
+            MessageRepository.SentMessage(user, message);
+        }
+        public static void ResetInbox()
+        {
+            Console.Write("Are you sure (Yes or No) : ");
+            string anwser = Console.ReadLine();
+            if(anwser == "Yes")
+            {
+                MessageRepository.ResetInbox(Authentication.GetAccount());
             }
         }
     }

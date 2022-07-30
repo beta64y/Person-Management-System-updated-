@@ -7,7 +7,7 @@ using Person_Management_System__updated_.ApplicationLogic.Validations;
 
 namespace Person_Management_System__updated_.Services
 {
-    internal class AuthendicationServices
+    internal class AuthenticationServices
     {
         public static string GetFirstName()
         {

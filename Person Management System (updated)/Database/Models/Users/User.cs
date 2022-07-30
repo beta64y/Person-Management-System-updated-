@@ -16,6 +16,7 @@ namespace Person_Management_System__updated_.Database.Models.Users
         public  string Email { get; set; }
         public  string Password { get; set; }
         public DateTime CreationTime { get; set; }
+        public List<Message> Inbox { get; set; } = new List<Message>();
         public List<Report> reportinbox { get; set; } = new List<Report>();
       
 

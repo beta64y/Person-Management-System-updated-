@@ -41,10 +41,10 @@ namespace Person_Management_System__updated_.ApplicationLogic
 
         public static void Register()
         {
-            string firstName = AuthendicationServices.GetFirstName();
-            string lastName = AuthendicationServices.GetLastName();
-            string email = AuthendicationServices.GetEmail();
-            string password = AuthendicationServices.GetPassword();
+            string firstName = AuthenticationServices.GetFirstName();
+            string lastName = AuthenticationServices.GetLastName();
+            string email = AuthenticationServices.GetEmail();
+            string password = AuthenticationServices.GetPassword();
 
             {
                 User user = UserRepository.Add(firstName, lastName, email, password);
