@@ -7,7 +7,7 @@ using Person_Management_System__updated_.Database.Models.Users;
 
 namespace Person_Management_System__updated_.Database.Models.Inbox
 {
-    internal class Report : Messages
+    internal class Report : Message
     {
         public User Target { get; set; }
         
